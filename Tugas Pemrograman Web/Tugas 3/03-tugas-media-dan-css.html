@@ -12,7 +12,7 @@
 <body>
 
     <main>
-        <article class="showcase-card">
+        <article class="showcase-card showcase-card--featured"> 
 
             <header class="showcase-card__header">
                 <h1 class="showcase-card__title">
@@ -51,25 +51,24 @@
 
                     Browser Anda tidak mendukung pemutaran video HTML5.
                 </video>
+
+                <div class="showcase-card__audio">
+                    <h2 class="showcase-card__audio-title">
+                        Audio Pembelajaran
+                    </h2>
+
+                    <audio
+                        class="showcase-card__audio-player"
+                        controls
+                        preload="metadata">
+
+                        <source src="aset/Audio.ogg" type="audio/ogg">
+                        <source src="aset/Audio.mp3" type="audio/mpeg">
+
+                        Browser Anda tidak mendukung pemutaran audio HTML5.
+                    </audio>
+                </div>
             </section>
-
-            <div class="showcase-card__audio">
-                <h2 class="showcase-card__audio-title">
-                    Audio Pembelajaran
-                </h2>
-
-                <audio
-                    class="showcase-card__audio-player"
-                    controls
-                    preload="metadata">
-
-                    <source src="aset/Audio.ogg" type="audio/ogg">
-                    <source src="aset/Audio.mp3" type="audio/mpeg">
-
-                    Browser Anda tidak mendukung pemutaran audio HTML5.
-                </audio>
-            </div>
-
         </article>
     </main>
 
