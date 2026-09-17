@@ -115,7 +115,7 @@ Tugas 2/
 Pesan commit yang digunakan untuk penyelesaian tugas adalah:
 
 ```text
-Selesaikan Tugas Mandiri Modul 2
+Selesaikan Tugas Mandiri modul 2
 ```
 
 ## Tugas 3 — Rekayasa Media Digital dan Dasar-Dasar CSS
@@ -175,5 +175,5 @@ Video pembelajaran yang digunakan berasal dari sumber eksternal YouTube. Tautan 
 Pesan commit yang digunakan untuk penyelesaian tugas adalah:
 
 ```text
-Selesaikan Tugas Mandiri Modul 3
+Selesaikan Tugas Mandiri modul 3
 ```
