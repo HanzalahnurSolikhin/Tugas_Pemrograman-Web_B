@@ -22,3 +22,22 @@ body {
     width: 100%;
     height: auto;
 }
+
+.showcase-card__video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.showcase-card__audio {
+    padding: 20px;
+}
+
+.showcase-card__audio-title {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.showcase-card__audio-player {
+    width: 100%;
+}
