@@ -14,7 +14,10 @@ body {
 
 .showcase-card__cover {
     display: block;
-    width: 100%;
+    width: calc(100% - 40px);
+    margin: 10px auto;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .showcase-card__cover img {
@@ -23,19 +26,42 @@ body {
     height: auto;
 }
 
+.showcase-card__video-wrapper {
+    width: calc(100% - 40px);
+    margin: 20px auto;
+}
+
 .showcase-card__video {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 8px;
 }
 
 .showcase-card__audio {
+    margin: 20px;
     padding: 20px;
+    background-color: #f4f6f9;
+    border-radius: 8px;
+}
+
+.showcase-card__audio-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #777;
 }
 
 .showcase-card__audio-title {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    margin-top: 4px;
+    font-size: 1.15rem;
+}
+
+.showcase-card__audio-description {
+    margin-top: 4px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 .showcase-card__audio-player {
@@ -58,7 +84,7 @@ body {
 }
 
 .showcase-card__header {
-    padding: 24px;
+    padding: 18px 20px 10px;
 }
 
 .showcase-card__title {
@@ -75,7 +101,94 @@ body {
     font-weight: 600;
 }
 
-.showcase-card__media {
-    width: 100%;
+.showcase-card__footer {
+    padding: 20px 24px;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+    color: #666;
 }
 
+.showcase-card__footer p + p {
+    margin-top: 8px;
+}
+
+.showcase-card__footer a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.showcase-card__footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 12px;
+    }
+
+    .showcase-card {
+        margin: 20px auto;
+        border-radius: 8px;
+    }
+
+    .showcase-card__header {
+        padding: 18px;
+    }
+
+    .showcase-card__title {
+        font-size: 1.5rem;
+    }
+
+    .showcase-card__audio {
+        padding: 18px;
+    }
+
+    .showcase-card__footer {
+        padding: 18px;
+    }
+}
+.showcase-card__info {
+    padding: 12px 20px;
+}
+
+.showcase-card__chapter {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #777;
+}
+
+.showcase-card__episode {
+    margin-top: 4px;
+    font-size: 1.3rem;
+}
+
+.showcase-card__topic {
+    margin-top: 4px;
+    color: #666;
+}
+
+.showcase-card__summary {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.showcase-card__summary-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #777;
+}
+
+.showcase-card__summary-title {
+    margin-top: 4px;
+    font-size: 1.2rem;
+}
+
+.showcase-card__summary-text {
+    margin-top: 8px;
+    color: #666;
+    font-size: 0.95rem;
+}

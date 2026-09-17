@@ -16,7 +16,7 @@
 
             <header class="showcase-card__header">
                 <h1 class="showcase-card__title">
-                   Video Pembelajaran CSS
+                   Pembelajaran CSS
                 </h1>
 
                 <p class="showcase-card__description">
@@ -40,35 +40,86 @@
                     alt="Cover materi pembelajaran Pemrograman Web">
             </picture>
 
+            <section class="showcase-card__info">
+                <h2 class="showcase-card__episode">
+                    Episode 01 - Pengenalan CSS
+                </h2>
+
+                <p class="showcase-card__topic">
+                    Klik tombol play untuk memutar video pembelajaran CSS.
+                </p>
+            </section>
+
             <section class="showcase-card__media">
-                <video
-                    class="showcase-card__video"
-                    controls
-                    poster="aset/Poster.jpg">
+                <div class="showcase-card__video-wrapper">
+                    <video class="showcase-card__video" controls poster="aset/Poster.jpg">
+                        <source src="aset/Video.webm" type="video/webm">
+                        <source src="aset/Video.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung pemutaran video HTML5.
+                    </video>
+                </div>
 
-                    <source src="aset/Video.webm" type="video/webm">
-                    <source src="aset/Video.mp4" type="video/mp4">
-
-                    Browser Anda tidak mendukung pemutaran video HTML5.
-                </video>
-
-                <div class="showcase-card__audio">
-                    <h2 class="showcase-card__audio-title">
-                        Audio Pembelajaran
+                <div class="showcase-card__summary">
+                    <h2 class="showcase-card__summary-title">
+                        Tentang Video Ini
                     </h2>
 
-                    <audio
-                        class="showcase-card__audio-player"
+                    <p class="showcase-card__summary-text">
+                        Video ini membahas pengenalan CSS atau Cascading Style Sheet,
+                        mulai dari pengertian CSS hingga konsep dasar penggunaannya
+                        untuk mengatur tampilan dan gaya pada halaman web.
+                    </p>
+
+                    <p class="showcase-card__summary-text">
+                        Materi ini menjadi dasar untuk memahami bagaimana CSS
+                        digunakan bersama HTML dalam membangun halaman web
+                        yang lebih terstruktur dan menarik.
+                    </p>
+                </div>
+
+                <div class="showcase-card__audio">
+                    <span class="showcase-card__audio-label">
+                        ALTERNATIF PEMBELAJARAN
+                    </span>
+
+                    <h2 class="showcase-card__audio-title">
+                        Ingin Mendengarkan Saja?
+                    </h2>
+
+                    <p class="showcase-card__audio-description">
+                        Dengarkan versi audio materi ini jika Anda ingin belajar
+                        tanpa menonton video.
+                    </p>
+
+                    <audio class="showcase-card__audio-player"
                         controls
                         preload="metadata">
-
                         <source src="aset/Audio.ogg" type="audio/ogg">
                         <source src="aset/Audio.mp3" type="audio/mpeg">
-
                         Browser Anda tidak mendukung pemutaran audio HTML5.
                     </audio>
                 </div>
             </section>
+
+            <footer class="showcase-card__footer">
+                <p>
+                    Sumber video:
+                    <a
+                        href="https://youtu.be/AQOBN9XByf0"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        YouTube
+                    </a>
+                </p>
+
+                <p>
+                    <strong>Disclaimer:</strong>
+                    Halaman ini dibuat untuk keperluan pembelajaran
+                    mata kuliah Pemrograman Web. Media video berasal
+                    dari sumber eksternal dan halaman ini bukan merupakan
+                    situs resmi dari pemilik media tersebut.
+                </p>
+            </footer>
         </article>
     </main>
 
