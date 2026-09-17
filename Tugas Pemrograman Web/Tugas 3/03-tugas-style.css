@@ -11,3 +11,14 @@ body {
     background-color: #f4f6f9;
     padding: 20px;
 }
+
+.showcase-card__cover {
+    display: block;
+    width: 100%;
+}
+
+.showcase-card__cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
