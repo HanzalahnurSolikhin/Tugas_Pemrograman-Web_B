@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f1f3f6;
+}
+
+.main-header {
+    background-color: #2374e5;
+    color: white;
+    padding: 16px 24px;
+}
+
+.header-brand h1 {
+    font-size: 1.5rem;
+}
+
+.main-nav {
+    margin-top: 10px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 16px;
+}
+
+.dashboard {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 20px;
+}
+
+.student-info,
+.dashboard-content {
+    background-color: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.student-info {
+    margin-bottom: 20px;
+}
+
+.student-info h2,
+.welcome h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.student-detail p {
+    margin-bottom: 8px;
+}
+
+.welcome {
+    margin-bottom: 20px;
+}
+
+.welcome p {
+    color: #666;
+}
+
+.academic-card {
+    background-color: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.academic-card h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.academic-value {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.academic-card a {
+    text-decoration: none;
+}
+
+.academic-card span {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.8rem;
+}
