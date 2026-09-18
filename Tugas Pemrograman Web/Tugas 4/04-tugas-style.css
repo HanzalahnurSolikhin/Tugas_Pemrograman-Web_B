@@ -8,10 +8,13 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f1f3f6;
+    background-color: #edf3fc;
 }
 
 .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #2374e5;
     color: white;
     padding: 16px 24px;
@@ -22,13 +25,13 @@ body {
 }
 
 .main-nav {
-    margin-top: 10px;
+    display: flex;
+    gap: 18px;
 }
 
 .main-nav a {
     color: white;
     text-decoration: none;
-    margin-right: 16px;
 }
 
 .dashboard {
@@ -37,9 +40,23 @@ body {
     padding: 0 20px;
 }
 
+@media (min-width: 992px) {
+
+    .dashboard {
+        display: grid;
+        grid-template-columns: 200px 1fr 220px;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .student-info {
+        margin-bottom: 0;
+    }
+}
+
 .student-info,
 .dashboard-content {
-    background-color: white;
+    background-color: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 6px;
     padding: 20px;
@@ -93,4 +110,25 @@ body {
     display: inline-block;
     margin-top: 8px;
     font-size: 0.8rem;
+}
+
+.academic-info {
+    background-color: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.academic-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.academic-info p {
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.academic-info ul {
+    padding-left: 20px;
 }
