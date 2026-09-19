@@ -37,6 +37,10 @@ Tugas_Pemrograman-Web_B/
     │       ├── Video.mp4
     │       └── Video.webm
     │
+    ├── Tugas 4/
+    │   ├── 04-tugas-tata-letak.html
+    │   └── 04-tugas-style.css
+    |
     └── tugas-portofolio/
         └── tugas-portofolio.html
 ```
@@ -176,4 +180,85 @@ Pesan commit yang digunakan untuk penyelesaian tugas adalah:
 
 ```text
 Selesaikan Tugas Mandiri modul 3
+```
+
+## Tugas 4 — Layout CSS dan Bootstrap
+
+Tugas ini berfokus pada pembuatan **Portal Akademik** untuk kebutuhan
+pembelajaran berbasis web. Halaman dirancang dalam bentuk dashboard
+akademik yang memuat navigasi, informasi mahasiswa, informasi akademik,
+serta beberapa kartu informasi akademik dengan menerapkan konsep
+**Flexbox, CSS Grid, Responsive Design, dan Bootstrap 5**.
+
+### Spesifikasi Tugas
+
+* Menggunakan **Flexbox** untuk mengatur navigasi utama pada bagian header.
+
+* Menggunakan **CSS Grid** untuk menyusun layout dashboard akademik.
+
+* Menerapkan layout tiga kolom pada layar desktop yang terdiri dari
+  informasi mahasiswa, konten akademik, dan informasi akademik.
+
+* Menggunakan **Bootstrap 5** melalui CDN untuk menerapkan komponen
+  dan utility pada kartu akademik.
+
+* Membuat beberapa kartu informasi akademik seperti IPK, total SKS,
+  dan status UKT.
+
+* Menerapkan responsive design menggunakan media query agar tampilan
+  dapat menyesuaikan ukuran layar.
+
+* Mengubah susunan navigasi menjadi vertikal pada ukuran layar yang lebih kecil.
+
+* Menambahkan efek **hover** dan **active state** pada menu navigasi.
+
+* Membuat kartu akademik dengan sudut membulat, bayangan, dan efek
+  transisi saat pengguna mengarahkan kursor.
+
+* Menggunakan `box-sizing: border-box` sebagai bagian dari reset CSS global.
+
+### Konsep yang Diterapkan
+
+Tugas ini menerapkan beberapa konsep dasar dalam layout CSS dan
+pengembangan antarmuka web, yaitu:
+
+- CSS Flexbox untuk navigasi.
+- CSS Grid untuk layout dashboard.
+- Responsive Web Design.
+- Media Query.
+- CSS Box Model.
+- CSS `box-sizing`.
+- CSS Hover dan Active State.
+- CSS Transition.
+- Bootstrap 5.
+- Bootstrap Card dan Button.
+- Layout responsif pada perangkat desktop, tablet, dan mobile.
+
+### Berkas Tugas
+
+Berkas utama dan stylesheet `Tugas 4` disimpan dalam:
+
+```text
+Tugas 4/
+
+├── 04-tugas-tata-letak.html
+└── 04-tugas-style.css
+```
+
+### Tampilan Portal
+
+Portal Akademik terdiri dari beberapa bagian utama:
+
+- Header dan navigasi utama.
+- Informasi mahasiswa.
+- Informasi dan sambutan portal akademik.
+- Kartu Indeks Prestasi Kumulatif.
+- Kartu Total SKS yang Diambil.
+- Kartu Status UKT.
+- Informasi akademik tambahan.
+
+Pesan commit yang digunakan untuk penyelesaian tugas adalah:
+
+```text
+Selesaikan Tugas Mandiri modul 4
 ```
