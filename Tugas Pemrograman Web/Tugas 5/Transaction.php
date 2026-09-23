@@ -19,26 +19,42 @@ class Transaction
 
         $currentBalance = $_SESSION['balance'] ?? 0.0;
 
-        return match ($this->type) {
+        $message = match ($this->type) {
             'deposit' => $this->processDeposit($currentBalance),
             'withdraw' => $this->processWithdraw($currentBalance),
             default => 'Jenis transaksi tidak valid.',
         };
+
+        if (
+            $message === 'Deposit berhasil diproses.'
+            || $message === 'Penarikan berhasil diproses.'
+        ) {
+            $_SESSION['transactions'][] = [
+                'id' => $this->id,
+                'type' => $this->type,
+                'amount' => $this->amount,
+                'balance' => $_SESSION['balance'],
+            ];
+        }
+
+        return $message;
     }
 
     private function processDeposit(float $currentBalance): string
     {
         $_SESSION['balance'] = $currentBalance + $this->amount;
 
-        return 'Setoran berhasil. Saldo saat ini: ' . $_SESSION['balance'];
+        return 'Deposit berhasil diproses.';
     }
+
     private function processWithdraw(float $currentBalance): string
     {
         if ($this->amount > $currentBalance) {
-            return 'Saldo tidak mencukupi untuk melakukan penarikan.';
+            return 'Penarikan ditolak karena saldo tidak mencukupi.';
         }
 
         $_SESSION['balance'] = $currentBalance - $this->amount;
-        return 'Penarikan berhasil. Saldo saat ini: ' . $_SESSION['balance'];
+
+        return 'Penarikan berhasil diproses.';
     }
 }
