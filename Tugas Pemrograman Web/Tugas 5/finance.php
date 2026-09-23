@@ -25,32 +25,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Kesalahan keamanan: token CSRF tidak valid.';
     }
 
-    $type = $_POST['type'] ?? '';
-    $amountInput = trim($_POST['amount'] ?? '');
+    if (isset($_POST['reset_data']) && empty($errors)) {
 
-    if ($type !== 'deposit' && $type !== 'withdraw') {
-        $errors[] = 'Jenis transaksi tidak valid.';
-    }
+        $_SESSION['balance'] = 0.0;
+        $_SESSION['transactions'] = [];
 
-    if ($amountInput === '' || !is_numeric($amountInput)) {
-        $errors[] = 'Jumlah transaksi harus berupa angka.';
-    } elseif ((float) $amountInput <= 0) {
-        $errors[] = 'Jumlah transaksi harus lebih dari 0.';
-    }
-
-    if (empty($errors)) {
-
-        $amount = (float) $amountInput * 1000;
-
-        $transaction = new Transaction(
-            uniqid('TRX-', true),
-            $type,
-            $amount
-        );
-
-        $message = $transaction->process();
+        $message = 'Saldo dan riwayat transaksi berhasil direset.';
 
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+    } elseif (empty($errors)) {
+
+        $type = $_POST['type'] ?? '';
+        $amountInput = trim($_POST['amount'] ?? '');
+
+        if ($type !== 'deposit' && $type !== 'withdraw') {
+            $errors[] = 'Jenis transaksi tidak valid.';
+        }
+
+        if ($amountInput === '' || !is_numeric($amountInput)) {
+            $errors[] = 'Jumlah transaksi harus berupa angka.';
+        } elseif ((float) $amountInput <= 0) {
+            $errors[] = 'Jumlah transaksi harus lebih dari 0.';
+        }
+
+        if (empty($errors)) {
+
+            $amount = (float) $amountInput * 1000;
+
+            $transaction = new Transaction(
+                uniqid('TRX-', true),
+                $type,
+                $amount
+            );
+
+            $message = $transaction->process();
+
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
     }
 }
 
@@ -136,6 +148,18 @@ $transactions = $_SESSION['transactions'];
 
     </form>
 
+    <form method="post" action="">
+        <input
+            type="hidden"
+            name="csrf_token"
+            value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>"
+        >
+
+        <button type="submit" name="reset_data" value="1">
+            Reset Data
+        </button>
+    </form>
+    
     <hr>
 
     <h2>Riwayat Transaksi</h2>

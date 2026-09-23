@@ -193,28 +193,19 @@ serta beberapa kartu informasi akademik dengan menerapkan konsep
 ### Spesifikasi Tugas
 
 * Menggunakan **Flexbox** untuk mengatur navigasi utama pada bagian header.
-
 * Menggunakan **CSS Grid** untuk menyusun layout dashboard akademik.
-
 * Menerapkan layout tiga kolom pada layar desktop yang terdiri dari
   informasi mahasiswa, konten akademik, dan informasi akademik.
-
 * Menggunakan **Bootstrap 5** melalui CDN untuk menerapkan komponen
   dan utility pada kartu akademik.
-
 * Membuat beberapa kartu informasi akademik seperti IPK, total SKS,
   dan status UKT.
-
 * Menerapkan responsive design menggunakan media query agar tampilan
   dapat menyesuaikan ukuran layar.
-
 * Mengubah susunan navigasi menjadi vertikal pada ukuran layar yang lebih kecil.
-
 * Menambahkan efek **hover** dan **active state** pada menu navigasi.
-
 * Membuat kartu akademik dengan sudut membulat, bayangan, dan efek
   transisi saat pengguna mengarahkan kursor.
-
 * Menggunakan `box-sizing: border-box` sebagai bagian dari reset CSS global.
 
 ### Konsep yang Diterapkan
@@ -261,4 +252,76 @@ Pesan commit yang digunakan untuk penyelesaian tugas adalah:
 
 ```text
 Selesaikan Tugas Mandiri modul 4
+```
+
+## Tugas 5 — Sistem Manajemen Keuangan Sederhana
+
+Tugas ini berfokus pada penerapan **PHP server-side** untuk membuat
+prototype sistem manajemen keuangan sederhana. Sistem dapat
+memproses transaksi deposit dan penarikan, menghitung saldo,
+menampilkan riwayat transaksi, serta menerapkan validasi dan
+keamanan pada form.
+
+### Spesifikasi Tugas
+
+* Menggunakan `declare(strict_types=1)` untuk menerapkan strict typing.
+* Membuat class `Transaction` dengan atribut private:
+  `id`, `type`, dan `amount`.
+* Menggunakan constructor property promotion pada class `Transaction`.
+* Membuat method `process()` untuk memproses transaksi.
+* Menggunakan `match` untuk menentukan jenis transaksi.
+* Menambahkan saldo ketika transaksi berupa deposit.
+* Menolak penarikan apabila jumlah transaksi melebihi saldo.
+* Menggunakan session untuk menyimpan saldo, token CSRF,
+  dan riwayat transaksi.
+* Melakukan validasi jenis transaksi dan jumlah transaksi.
+* Memastikan jumlah transaksi bernilai positif.
+* Menggunakan token CSRF pada form dan melakukan verifikasi
+  menggunakan `hash_equals()`.
+* Menggunakan `htmlspecialchars()` ketika menampilkan data
+  transaksi ke halaman.
+* Menampilkan saldo dan riwayat transaksi kepada pengguna.
+* Menyediakan fitur reset untuk menghapus saldo dan riwayat transaksi.
+
+### Konsep yang Diterapkan
+
+- PHP Strict Types.
+- Object-Oriented Programming.
+- Encapsulation dengan property `private`.
+- Constructor Property Promotion.
+- `match expression`.
+- PHP Session.
+- Form Processing dengan `POST`.
+- Validasi input.
+- CSRF Protection.
+- XSS Prevention.
+- `htmlspecialchars()`.
+- Riwayat transaksi berbasis session.
+
+### Berkas Tugas
+
+Berkas utama dan stylesheet `Tugas 5` disimpan dalam:
+
+```text
+Tugas 5/
+├── Transaction.php
+└── finance.php
+```
+
+### Alur Sistem
+
+- Pengguna memilih jenis transaksi.
+- Pengguna memasukkan jumlah transaksi dalam satuan ribuan rupiah.
+- Sistem memvalidasi input.
+- Sistem memeriksa token CSRF.
+- Objek Transaction dibuat.
+- Method process() memproses transaksi.
+- Saldo diperbarui apabila transaksi berhasil.
+- Transaksi berhasil disimpan ke riwayat.
+- Saldo dan riwayat ditampilkan secara aman.
+- Pengguna dapat mereset saldo dan riwayat transaksi.
+
+Pesan commit yang digunakan untuk penyelesaian tugas adalah:
+```text
+Selesaikan Tugas Mandiri modul 5
 ```
