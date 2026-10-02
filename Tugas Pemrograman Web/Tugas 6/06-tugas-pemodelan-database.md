@@ -94,3 +94,89 @@ pada transaksi yang berbeda.
 
 Kondisi tersebut akan diperbaiki pada tahap 2NF dan 3NF.
 
+### 4.3 Second Normal Form (2NF)
+Bentuk 2NF diperoleh setelah memenuhi 1NF dan menghilangkan
+ketergantungan parsial (partial dependency).
+
+Pada tabel 1NF, kunci utama sementara terdiri dari:
+
+`NIM + ID Buku + Tanggal Peminjaman`
+
+Beberapa atribut tidak bergantung pada seluruh kunci gabungan.
+
+Contohnya:
+
+- `Nama Mahasiswa` dan `Alamat` hanya bergantung pada `NIM`.
+- `Judul Buku`, `Tahun Terbit`, dan `ID Penerbit` hanya bergantung
+  pada `ID Buku`.
+- `Tanggal Pengembalian` dan `Status` bergantung pada aktivitas
+  peminjaman.
+
+Karena terdapat atribut yang hanya bergantung pada sebagian kunci
+gabungan, data tersebut dipisahkan menjadi beberapa tabel.
+
+#### Tabel Mahasiswa
+
+| NIM (PK) | Nama Mahasiswa | Alamat |
+|---|---|---|
+| D121241071 | Gabriel Tan | Makassar |
+
+#### Tabel Buku
+
+| ID Buku (PK) | Judul Buku | Tahun Terbit | ID Penerbit |
+|---|---|---:|---|
+| B001 | Pemrograman Web | 2026 | P001 |
+| B002 | Basis Data | 2025 | P002 |
+
+#### Tabel Peminjaman
+
+| NIM (FK) | ID Buku (FK) | Tanggal Peminjaman | Tanggal Pengembalian | Status |
+|---|---|---|---|---|
+| D121241071 | B001 | 2026-09-01 | 2026-09-08 | Dikembalikan |
+| D121241071 | B002 | 2026-09-02 | - | Dipinjam |
+
+Pada tahap 2NF, data mahasiswa dan data buku tidak lagi diulang
+pada setiap baris transaksi. Namun, data penerbit masih dapat
+menimbulkan ketergantungan transitif melalui data buku.
+
+### 4.4 Third Normal Form (3NF)
+
+Bentuk 3NF diperoleh setelah memenuhi 2NF dan menghilangkan
+ketergantungan transitif.
+
+Pada tabel Buku, terdapat hubungan:
+
+`ID Buku → ID Penerbit → Nama Penerbit`
+
+Artinya, informasi penerbit tidak bergantung secara langsung pada
+`ID Buku`, tetapi bergantung pada `ID Penerbit`.
+
+Oleh karena itu, data penerbit dipisahkan menjadi tabel tersendiri.
+
+#### Tabel Penerbit
+
+| ID Penerbit (PK) | Nama Penerbit | Alamat Penerbit |
+|---|---|---|
+| P001 | Penerbit A | Jakarta |
+| P002 | Penerbit B | Bandung |
+
+#### Tabel Buku setelah 3NF
+
+| ID Buku (PK) | Judul Buku | Tahun Terbit | ID Penerbit (FK) |
+|---|---|---:|---|
+| B001 | Pemrograman Web | 2026 | P001 |
+| B002 | Basis Data | 2025 | P002 |
+
+Dengan pemisahan tersebut, informasi penerbit hanya disimpan pada
+tabel Penerbit. Tabel Buku cukup menyimpan `ID Penerbit` sebagai
+foreign key.
+
+Hasil normalisasi sampai 3NF menghasilkan empat tabel utama:
+
+1. `mahasiswa`
+2. `penerbit`
+3. `buku`
+4. `peminjaman`
+
+Struktur tersebut mengurangi redundansi data dan menjaga hubungan
+antarentitas melalui primary key dan foreign key.
