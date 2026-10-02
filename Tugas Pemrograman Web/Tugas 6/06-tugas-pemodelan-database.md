@@ -253,7 +253,6 @@ Dengan demikian, hubungan utama yang terbentuk adalah:
 `penerbit 1:N buku`
 
 ## 6. ERD Logical
-
 ERD berikut menggambarkan primary key, foreign key, atribut utama,
 serta hubungan antarentitas pada rancangan database E-Library.
 
