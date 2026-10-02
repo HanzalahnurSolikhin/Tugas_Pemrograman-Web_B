@@ -329,3 +329,68 @@ Pesan commit yang digunakan untuk penyelesaian tugas adalah:
 ```text
 Selesaikan Tugas Mandiri modul 5
 ```
+
+## Tugas 6 — Pemodelan Data dan Basis Data Relasional
+
+Tugas ini berfokus pada penerapan **pemodelan data dan basis data
+relasional** untuk merancang database E-Library Kampus. Sistem
+dirancang untuk mengelola data mahasiswa, buku, penerbit, serta
+transaksi peminjaman dan pengembalian buku.
+
+### Spesifikasi Tugas
+
+* Merancang ERD logis untuk sistem E-Library Kampus.
+* Mengidentifikasi entitas dan seluruh atribut yang diperlukan.
+* Menentukan Primary Key (PK) dan Foreign Key (FK).
+* Melakukan simulasi normalisasi data dari UNF hingga 1NF.
+* Melakukan normalisasi data dari 1NF hingga 2NF.
+* Melakukan normalisasi data dari 2NF hingga 3NF.
+* Menghilangkan redundansi dan ketergantungan data.
+* Membuat desain tabel akhir setelah proses normalisasi.
+* Menentukan tipe data untuk setiap atribut pada tabel.
+* Memvisualisasikan hubungan antar tabel menggunakan Mermaid.
+* Menampilkan relasi antar entitas dalam bentuk diagram ERD.
+
+### Konsep yang Diterapkan
+
+- Pemodelan Data.
+- Basis Data Relasional.
+- Entity Relationship Diagram (ERD).
+- Primary Key (PK).
+- Foreign Key (FK).
+- Normalisasi UNF.
+- First Normal Form (1NF).
+- Second Normal Form (2NF).
+- Third Normal Form (3NF).
+- Partial Dependency.
+- Transitive Dependency.
+- Redundansi Data.
+- Relasi antar tabel.
+- Mermaid ERD.
+
+### Berkas Tugas
+
+Berkas utama `Tugas 6` disimpan dalam:
+
+```text
+Tugas 6/
+├── 06-tugas-pemodelan-database.md
+```
+
+### Alur Perancangan
+- Mengidentifikasi kebutuhan data pada sistem E-Library.
+- Menentukan entitas Mahasiswa, Buku, Penerbit, dan Peminjaman.
+- Mengidentifikasi atribut pada setiap entitas.
+- Menentukan Primary Key dan Foreign Key.
+- Membuat bentuk data awal dalam UNF.
+- Mengubah data menjadi bentuk 1NF dengan nilai yang atomic.
+- Menghilangkan partial dependency pada tahap 2NF.
+- Menghilangkan transitive dependency pada tahap 3NF.
+- Membentuk tabel akhir yang telah dinormalisasi.
+- Menentukan tipe data setiap atribut.
+- Menggambarkan hubungan antar tabel menggunakan ERD Mermaid.
+
+Pesan commit yang digunakan untuk penyelesaian tugas adalah:
+```text
+Selesaikan Tugas Mandiri modul 6
+```
