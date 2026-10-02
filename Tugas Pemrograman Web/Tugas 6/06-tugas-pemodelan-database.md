@@ -179,4 +179,114 @@ Hasil normalisasi sampai 3NF menghasilkan empat tabel utama:
 4. `peminjaman`
 
 Struktur tersebut mengurangi redundansi data dan menjaga hubungan
-antarentitas melalui primary key dan foreign key.
+antarentitas melalui primary key dan foreign key. 
+
+## 5. Desain Tabel
+
+Setelah melalui proses normalisasi hingga 3NF, basis data E-Library
+terdiri dari empat tabel utama, yaitu `mahasiswa`, `penerbit`, `buku`,
+dan `peminjaman`.
+
+### 5.1 Tabel `mahasiswa`
+
+| Atribut | Tipe Data | Keterangan |
+|---|---|---|
+| `nim` | VARCHAR(10) | Primary Key, identitas mahasiswa |
+| `nama_mahasiswa` | VARCHAR(100) | Nama mahasiswa |
+| `alamat` | TEXT | Alamat mahasiswa |
+
+**Primary Key:** `nim`
+
+### 5.2 Tabel `penerbit`
+
+| Atribut | Tipe Data | Keterangan |
+|---|---|---|
+| `id_penerbit` | VARCHAR(10) | Primary Key, identitas penerbit |
+| `nama_penerbit` | VARCHAR(100) | Nama penerbit |
+| `alamat_penerbit` | TEXT | Alamat penerbit |
+
+**Primary Key:** `id_penerbit`
+
+### 5.3 Tabel `buku`
+
+| Atribut | Tipe Data | Keterangan |
+|---|---|---|
+| `id_buku` | VARCHAR(10) | Primary Key, identitas buku |
+| `judul_buku` | VARCHAR(150) | Judul buku |
+| `tahun_terbit` | YEAR | Tahun buku diterbitkan |
+| `id_penerbit` | VARCHAR(10) | Foreign Key yang mengacu ke `penerbit` |
+
+**Primary Key:** `id_buku`  
+**Foreign Key:** `id_penerbit` → `penerbit.id_penerbit`
+
+### 5.4 Tabel `peminjaman`
+
+| Atribut | Tipe Data | Keterangan |
+|---|---|---|
+| `id_peminjaman` | INT | Primary Key, identitas transaksi |
+| `nim` | VARCHAR(10) | Foreign Key yang mengacu ke `mahasiswa` |
+| `id_buku` | VARCHAR(10) | Foreign Key yang mengacu ke `buku` |
+| `tanggal_peminjaman` | DATE | Tanggal buku dipinjam |
+| `tanggal_pengembalian` | DATE | Tanggal buku dikembalikan |
+| `status` | VARCHAR(20) | Status peminjaman buku |
+
+**Primary Key:** `id_peminjaman`  
+**Foreign Key:** `nim` → `mahasiswa.nim`  
+**Foreign Key:** `id_buku` → `buku.id_buku`
+
+### 5.5 Ringkasan Relasi
+
+Hubungan antar tabel pada rancangan akhir adalah:
+
+- Satu mahasiswa dapat memiliki banyak transaksi peminjaman.
+- Satu buku dapat muncul pada banyak transaksi peminjaman.
+- Satu penerbit dapat menerbitkan banyak buku.
+- Setiap transaksi peminjaman dilakukan oleh satu mahasiswa dan
+  berkaitan dengan satu buku.
+
+Dengan demikian, hubungan utama yang terbentuk adalah:
+
+`mahasiswa 1:N peminjaman`
+
+`buku 1:N peminjaman`
+
+`penerbit 1:N buku`
+
+## 6. ERD Logical
+
+ERD berikut menggambarkan primary key, foreign key, atribut utama,
+serta hubungan antarentitas pada rancangan database E-Library.
+
+```mermaid
+erDiagram
+    MAHASISWA ||--o{ PEMINJAMAN : melakukan
+    BUKU ||--o{ PEMINJAMAN : dipinjam
+    PENERBIT ||--o{ BUKU : menerbitkan
+
+    MAHASISWA {
+        VARCHAR(10) nim PK
+        VARCHAR(100) nama_mahasiswa
+        TEXT alamat
+    }
+
+    PENERBIT {
+        VARCHAR(10) id_penerbit PK
+        VARCHAR(100) nama_penerbit
+        TEXT alamat_penerbit
+    }
+
+    BUKU {
+        VARCHAR(10) id_buku PK
+        VARCHAR(150) judul_buku
+        YEAR tahun_terbit
+        VARCHAR(10) id_penerbit FK
+    }
+
+    PEMINJAMAN {
+        INT id_peminjaman PK
+        VARCHAR(10) nim FK
+        VARCHAR(10) id_buku FK
+        DATE tanggal_peminjaman
+        DATE tanggal_pengembalian
+        VARCHAR(20) status
+    }
