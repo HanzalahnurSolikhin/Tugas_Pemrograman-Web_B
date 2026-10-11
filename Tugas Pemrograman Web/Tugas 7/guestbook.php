@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+session_start();
+
 require_once __DIR__ . '/GuestBook2.php';
 
 $dsn = 'mysql:host=localhost;dbname=akademik_db;charset=utf8mb4';
@@ -22,31 +24,80 @@ try {
 
     $guestBook = new GuestBook($pdo);
 } catch (PDOException $e) {
-    exit('Koneksi database gagal: ' . $e->getMessage());
+    exit('Koneksi database gagal.');
 }
 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$errors = [];
+
+$nama = '';
+$email = '';
+$pesan = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $csrfToken = $_POST['csrf_token'] ?? '';
+
+    if (
+        !is_string($csrfToken)
+        || !hash_equals($_SESSION['csrf_token'], $csrfToken)
+    ) {
+        $errors[] = 'Token CSRF tidak valid.';
+    }
+
     $nama = trim($_POST['nama'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $pesan = trim($_POST['pesan'] ?? '');
 
-    $guestBook->addMessage(
-        $nama,
-        $email,
-        $pesan
-    );
+    if ($nama === '') {
+        $errors[] = 'Nama tidak boleh kosong.';
+    }
 
-    header('Location: guestbook.php');
-    exit;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Format email tidak valid.';
+    }
+
+    if (strlen($pesan) < 5) {
+        $errors[] = 'Pesan minimal lima karakter.';
+    }
+
+    if ($errors === []) {
+        $guestBook->addMessage(
+            $nama,
+            $email,
+            $pesan
+        );
+
+        $_SESSION['success'] = 'Pesan berhasil dikirim.';
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+        header('Location: guestbook.php');
+        exit;
+    }
 }
 
+$success = $_SESSION['success'] ?? null;
+unset($_SESSION['success']);
+
 $messages = $guestBook->getMessages();
+
+function e(string $value): string
+{
+    return htmlspecialchars(
+        $value,
+        ENT_QUOTES | ENT_SUBSTITUTE,
+        'UTF-8'
+    );
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -87,6 +138,20 @@ $messages = $guestBook->getMessages();
             cursor: pointer;
         }
 
+        .message {
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+        }
+
+        .message--error {
+            background: #fff1f1;
+        }
+
+        .message--success {
+            background: #f0fff4;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -110,7 +175,35 @@ $messages = $guestBook->getMessages();
 
     <h1>Buku Tamu Perpustakaan</h1>
 
+    <p>
+        Silakan tuliskan pesan melalui formulir berikut.
+    </p>
+
+    <?php if ($success !== null): ?>
+        <div class="message message--success">
+            <?= e($success) ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($errors !== []): ?>
+        <div class="message message--error">
+            <strong>Terjadi kesalahan:</strong>
+
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li><?= e($error) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
     <form method="POST" action="">
+        <input
+            type="hidden"
+            name="csrf_token"
+            value="<?= e($_SESSION['csrf_token']) ?>"
+        >
+
         <div>
             <label for="nama">Nama</label>
 
@@ -118,6 +211,8 @@ $messages = $guestBook->getMessages();
                 type="text"
                 id="nama"
                 name="nama"
+                value="<?= e($nama) ?>"
+                required
             >
         </div>
 
@@ -128,6 +223,8 @@ $messages = $guestBook->getMessages();
                 type="email"
                 id="email"
                 name="email"
+                value="<?= e($email) ?>"
+                required
             >
         </div>
 
@@ -137,7 +234,9 @@ $messages = $guestBook->getMessages();
             <textarea
                 id="pesan"
                 name="pesan"
-            ></textarea>
+                minlength="5"
+                required
+            ><?= e($pesan) ?></textarea>
         </div>
 
         <button type="submit">
@@ -167,10 +266,10 @@ $messages = $guestBook->getMessages();
             <?php else: ?>
                 <?php foreach ($messages as $message): ?>
                     <tr>
-                        <td><?= $message['nama'] ?></td>
-                        <td><?= $message['email'] ?></td>
-                        <td><?= $message['pesan'] ?></td>
-                        <td><?= $message['tanggal_kirim'] ?></td>
+                        <td><?= e($message['nama']) ?></td>
+                        <td><?= e($message['email']) ?></td>
+                        <td><?= nl2br(e($message['pesan'])) ?></td>
+                        <td><?= e($message['tanggal_kirim']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
