@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 session_start();
 
-require_once __DIR__ . '/GuestBook2.php';
+require_once __DIR__ . '/GuestBook.php';
 
 $dsn = 'mysql:host=localhost;dbname=akademik_db;charset=utf8mb4';
 $username = 'root';

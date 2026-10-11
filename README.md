@@ -48,6 +48,10 @@ Tugas_Pemrograman-Web_B/
     ├── Tugas 6/
     |   └── 06-tugas-pemodelan-database.md
     |
+    ├── Tugas 7/
+    │   ├── GuestBook.php
+    │   └── guestbook.php
+    |
     └── tugas-portofolio/
         └── tugas-portofolio.html
 ```
@@ -396,4 +400,36 @@ Tugas 6/
 Pesan commit yang digunakan untuk penyelesaian tugas adalah:
 ```text
 Selesaikan Tugas Mandiri modul 6
+```
+
+## Tugas 7 — Modul Buku Tamu Berbasis PDO
+
+Tugas Mandiri Modul 7 mengimplementasikan modul buku tamu digital perpustakaan menggunakan PHP, MySQL, dan PDO.
+
+### Fitur
+
+- Koneksi basis data menggunakan PDO.
+- Tabel `buku_tamu` untuk menyimpan data pesan.
+- Form input nama, email, dan pesan.
+- Prepared statement pada operasi INSERT dan SELECT.
+- Validasi nama tidak boleh kosong.
+- Validasi format email.
+- Validasi pesan minimal lima karakter.
+- Perlindungan CSRF menggunakan token session.
+- Sanitasi keluaran menggunakan `htmlspecialchars()`.
+- Daftar pesan ditampilkan pada halaman yang sama.
+
+### Berkas Tugas
+
+Berkas utama `Tugas 7` disimpan dalam:
+
+```text
+Tugas 7/
+├── GuestBook.php
+└── guestbook.php
+```
+
+Pesan commit yang digunakan untuk penyelesaian tugas adalah:
+```text
+Selesaikan Tugas Mandiri modul 7
 ```
