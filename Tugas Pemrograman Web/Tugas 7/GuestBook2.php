@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+class GuestBook
+{
+    public function __construct(
+        private PDO $pdo
+    ) {
+        $this->createTable();
+    }
+
+    private function createTable(): void
+    {
+        $sql = "
+            CREATE TABLE IF NOT EXISTS buku_tamu (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                nama VARCHAR(100) NOT NULL,
+                email VARCHAR(150) NOT NULL,
+                pesan TEXT NOT NULL,
+                tanggal_kirim TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+        ";
+
+        $this->pdo->exec($sql);
+    }
+}
